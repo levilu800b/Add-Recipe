@@ -136,7 +136,6 @@ import {Container, Row, Col, Button} from 'react-bootstrap';
               </label>
               {this.state.measurement.map(measurement=> (
                 <input type="text"
-                  value={this.state.measurement}
                   name="measurement"
                   onChange={this.changeHandler}
                   id="defaultFormRegisterNameEx"
@@ -181,7 +180,6 @@ import {Container, Row, Col, Button} from 'react-bootstrap';
               </label>
               {this.state.measurement.map(ingredient=> (
                 <input type="text"
-                  value={this.state.ingredient}
                   name="ingredient"
                   onChange={this.changeHandler}
                   id="defaultFormRegisterNameEx"

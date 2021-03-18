@@ -1,6 +1,7 @@
 import React from 'react';
 import {Container, Row, Col, Button} from 'react-bootstrap';
 
+
  class AddRecipe extends React.Component {
     state = {
         recipetitle: "",
@@ -127,7 +128,7 @@ import {Container, Row, Col, Button} from 'react-bootstrap';
               <h2 className="header2">Add Ingredients</h2>
               <br />
               <Row>
-               <Button onClick={()=>{this.setState(previousState=>({measurement:[...previousState.measurement,{measurement:"", unit:"", ingredients:""}]}))}}></Button>
+               <Button className="btn" onClick={()=>{this.setState(previousState=>({measurement:[...previousState.measurement,{measurement:"", unit:"", ingredients:""}]}))}}></Button>
                   <Col>
                   <label
                   htmlFor="defaultFormRegisterNameEx"

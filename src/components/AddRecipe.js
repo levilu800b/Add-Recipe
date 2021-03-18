@@ -9,8 +9,8 @@ import {Container, Row, Col, Button} from 'react-bootstrap';
         cooktime: "",
         serves: "",
         measurement: [{measurement:""}],
-        unit: "",
-        ingredient: "",
+        unit:  [{unit:""}],
+        ingredient:  [{ingredient:""}],
       };
     
       submitHandler = event => {

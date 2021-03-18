@@ -60,7 +60,7 @@ import {Container, Row, Col, Button} from 'react-bootstrap';
               </label>
                 <select
                   onChange={this.changeHandler}
-                  type="numberofguests"
+                  type="select"
                   id="defaultFormRegisterConfirmEx3"
                   className="form-control"
                   name="preptime"
@@ -84,7 +84,7 @@ import {Container, Row, Col, Button} from 'react-bootstrap';
               </label>
                 <select
                   onChange={this.changeHandler}
-                  type="numberofguests"
+                  type="select"
                   id="defaultFormRegisterConfirmEx3"
                   className="form-control"
                   name="cooktime"
@@ -108,7 +108,7 @@ import {Container, Row, Col, Button} from 'react-bootstrap';
               </label>
                 <select
                   onChange={this.changeHandler}
-                  type="numberofguests"
+                  type="select"
                   id="defaultFormRegisterConfirmEx3"
                   className="form-control"
                   name="serves"
@@ -137,7 +137,6 @@ import {Container, Row, Col, Button} from 'react-bootstrap';
               </label>
               {this.state.measurement.map(measurement=> (
                 <input type="text"
-                  name="measurement"
                   onChange={this.changeHandler}
                   id="defaultFormRegisterNameEx"
                   className="form-control"
@@ -156,7 +155,7 @@ import {Container, Row, Col, Button} from 'react-bootstrap';
               {this.state.measurement.map(unit=> (
                 <select
                   onChange={this.changeHandler}
-                  type="numberofguests"
+                  type="select"
                   id="defaultFormRegisterConfirmEx3"
                   className="form-control"
                   name="unit"

@@ -11,6 +11,7 @@ import {Container, Row, Col, Button} from 'react-bootstrap';
         measurement: [{measurement:""}],
         unit:  [{unit:""}],
         ingredient:  [{ingredient:""}],
+        steps: "",
       };
     
       submitHandler = event => {
@@ -194,7 +195,22 @@ import {Container, Row, Col, Button} from 'react-bootstrap';
               <h2 className="header2">Add Steps</h2>
               <Row>
                   <Col>
-                  </Col>
+                <label
+                  htmlFor="defaultFormRegisterNameEx"
+                  className="grey-text"
+                >
+              </label>
+                <input type="text"
+                  value={this.state.steps}
+                  name="steps"
+                  onChange={this.changeHandler}
+                  id="defaultFormRegisterNameEx"
+                  className="form-control"
+                  placeholder="Step One"
+                  required
+                />
+                <div className="valid-feedback">Looks good!</div>
+              </Col>
               </Row>
               </form>
               </div>

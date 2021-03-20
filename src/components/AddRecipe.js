@@ -1,6 +1,7 @@
 import React from 'react';
-import {Container, Row, Col} from 'react-bootstrap';
-import {FaPlus} from 'react-icons/fa'
+import {Container, Row, Col, Button} from 'react-bootstrap';
+import {FaPlus} from 'react-icons/fa';
+import { v4 as uuidv4 } from 'uuid';
 
  class AddRecipe extends React.Component {
     constructor(props) {
@@ -13,6 +14,8 @@ import {FaPlus} from 'react-icons/fa'
         measurement: "",
         unit: "",
         ingredients: [{measurement:"", unit:"", ingredients:""}],
+        number: "",
+        steps: [{steps:"", number:""}]
       };
     }
     
@@ -145,6 +148,7 @@ import {FaPlus} from 'react-icons/fa'
               {this.state.ingredients.map(ingredients=>(
                 <input type="text"
                   value={this.state.measurement}
+                  key={uuidv4()}
                   name="measurement"
                   onChange={this.changeHandler}
                   id="defaultFormRegisterNameEx"
@@ -197,9 +201,48 @@ import {FaPlus} from 'react-icons/fa'
               </Row>
               <h2 className="header2">Add Steps</h2>
               <Row>
+              <FaPlus className="button-plus" onClick={()=>{
+                        this.setState(previousState=>({steps:[...previousState.steps,
+                         {steps:"", number:previousState.currentStep}],
+                          currentStep: previousState.currentStep++}))}}>
+              </FaPlus>
+              <Col xs={2}>
+              <label
+                  htmlFor="defaultFormRegisterNameEx"
+                  className="grey-text"
+                >
+              </label>
+              {this.state.steps.map(number=> (
+                <input 
+                key={uuidv4()}
+                  onChange={this.changeHandler}
+                  id="defaultFormRegisterNameEx"
+                  className="form-control"
+                  placeholder="Add Number"
+                  required
+                />
+              ))}
+                <div className="valid-feedback">Looks good!</div>
+              </Col>
                   <Col>
-                  </Col>
+                <label
+                  htmlFor="defaultFormRegisterNameEx"
+                  className="grey-text"
+                >
+              </label>
+                <input type="text"
+                  onChange={this.changeHandler}
+                  id="defaultFormRegisterNameEx"
+                  className="form-control"
+                  placeholder="Step One"
+                  required
+                />
+                <div className="valid-feedback">Looks good!</div>
+              </Col>
               </Row>
+              <Button className="button-submit" color="primary" type="submit">
+                  Create Recipe
+              </Button>
               </form>
               </div>
               </Container>

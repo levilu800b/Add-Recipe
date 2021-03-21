@@ -26,7 +26,7 @@ import { v4 as uuidv4 } from 'uuid';
             [e.target.name]: e.target.value });
       };
 
-      addButton = (e) => {
+      addIngredients = (e) => {
         this.setState((prevState) => ({
           ingredients: [...prevState.ingredients, {measurement:"", unit:"", ingredients:""}],
         }));
@@ -147,7 +147,7 @@ import { v4 as uuidv4 } from 'uuid';
               <br />
               <Row>
               <FaPlus className="button-plus" onClick={(e)=>{
-                  this.addButton(e)}}/>
+                  this.addIngredients(e)}}/>
               <Col>
                   <label
                   htmlFor="defaultFormRegisterNameEx"

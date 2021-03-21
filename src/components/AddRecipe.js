@@ -149,7 +149,6 @@ import { v4 as uuidv4 } from 'uuid';
                 <input type="text"
                 key= {uuidv4}
                   value={this.state.measurement}
-                  name="measurement"
                   onChange={e => this.changeHandler(e)}
                   id="defaultFormRegisterNameEx"
                   className="form-control"

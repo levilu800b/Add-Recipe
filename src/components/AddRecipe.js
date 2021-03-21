@@ -12,6 +12,7 @@ import { v4 as uuidv4 } from 'uuid';
         cooktime: "",
         serves: "",
         ingredients: [{measurement:"", unit:"", ingredients:""}],
+        instructions: [{step:"", instructions:""}],
       };
     }
     
@@ -28,6 +29,12 @@ import { v4 as uuidv4 } from 'uuid';
       addButton = (e) => {
         this.setState((prevState) => ({
           ingredients: [...prevState.ingredients, {measurement:"", unit:"", ingredients:""}],
+        }));
+      }
+
+      addButton = (e) => {
+        this.setState((prevState) => ({
+          instructions: [...prevState.instructions, {step:"", instructions:""}],
         }));
       }
 
@@ -202,8 +209,43 @@ import { v4 as uuidv4 } from 'uuid';
               </Row>
               <h2 className="header2">Add Steps</h2>
               <Row>
-                  <Col>
-                  </Col>
+              <FaPlus className="button-plus" onClick={(e)=>{
+                  this.addButton(e)}}/>
+                 <Col xs="3">
+                  <label
+                  htmlFor="defaultFormRegisterNameEx"
+                  className="grey-text"
+                >
+              </label>
+              {this.state.instructions.map(instructions=>(
+                <input type="text"
+                key= {uuidv4}
+                  value={this.state.step}
+                  onChange={e => this.changeHandler(e)}
+                  id="defaultFormRegisterNameEx"
+                  className="form-control"
+                  placeholder="Insert No"
+                  required
+                />
+              ))}
+                <div className="valid-feedback">Looks good!</div>
+                </Col>
+                <Col>
+                <label
+                  htmlFor="defaultFormRegisterNameEx"
+                  className="grey-text"
+                >
+              </label>
+                <input type="text"
+                  name="instructions"
+                  onChange={e => this.changeHandler(e)}
+                  id="defaultFormRegisterNameEx"
+                  className="form-control"
+                  placeholder="Step One"
+                  required
+                />
+                <div className="valid-feedback">Looks good!</div>
+              </Col>
               </Row>
               </form>
               </div>

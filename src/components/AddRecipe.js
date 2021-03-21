@@ -1,5 +1,5 @@
 import React from 'react';
-import {Container, Row, Col, Button} from 'react-bootstrap';
+import {Container, Row, Col} from 'react-bootstrap';
 import {FaPlus} from 'react-icons/fa';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -11,22 +11,23 @@ import { v4 as uuidv4 } from 'uuid';
         preptime: "",
         cooktime: "",
         serves: "",
-        measurement: "",
-        unit: "",
         ingredients: [{measurement:"", unit:"", ingredients:""}],
-        number: "",
-        steps: [{steps:"", number:""}]
       };
     }
     
       submitHandler = event => {
         event.preventDefault();
-        event.target.className += " was-validated";
+        event.target.value += " was-validated";
       };
     
-      changeHandler = event => {
-        this.setState({ [event.target.name]: event.target.value });
+      changeHandler = e => {
+        this.setState({ 
+            [e.target.name]: e.target.value });
       };
+
+      addButton (){
+        this.setState({ingredients:[...this.state.ingredients, {measurement:"", unit:"", ingredients:""}]})
+      }
 
       
     
@@ -50,7 +51,7 @@ import { v4 as uuidv4 } from 'uuid';
                 <input type="text"
                   value={this.state.recipetitle}
                   name="recipetitle"
-                  onChange={this.changeHandler}
+                  onChange={e => this.changeHandler(e)}
                   id="defaultFormRegisterNameEx"
                   className="form-control"
                   placeholder="Recipe Title"
@@ -67,21 +68,21 @@ import { v4 as uuidv4 } from 'uuid';
                 >
               </label>
                 <select
-                  onChange={this.changeHandler}
+                  onChange={e => this.changeHandler(e)}
                   type="numberofguests"
                   id="defaultFormRegisterConfirmEx3"
                   className="form-control"
                   name="preptime"
                   placeholder="Prep Time">
                   <option value="">Prep Time</option>
-                  <option value="1">5 minutes</option>
-                  <option value="2">10 minutes</option>
-                  <option value="3">15 minutes</option>
-                  <option value="4">20 minutes</option>
-                  <option value="5">25 minutes</option>
-                  <option value="6">30 minutes</option>
-                  <option value="7">35 minutes</option>
-                  <option value="8">40 minutes</option>
+                  <option value="5 minutes">5 minutes</option>
+                  <option value="10 minutes">10 minutes</option>
+                  <option value="15 minutes">15 minutes</option>
+                  <option value="20 minutes">20 minutes</option>
+                  <option value="25 minutes">25 minutes</option>
+                  <option value="30 minutes">30 minutes</option>
+                  <option value="35 minutes">35 minutes</option>
+                  <option value="40 minutes">40 minutes</option>
                 </select>
                   </Col>
                   <Col>
@@ -91,21 +92,21 @@ import { v4 as uuidv4 } from 'uuid';
                 >
               </label>
                 <select
-                  onChange={this.changeHandler}
+                  onChange={e => this.changeHandler(e)}
                   type="numberofguests"
                   id="defaultFormRegisterConfirmEx3"
                   className="form-control"
                   name="cooktime"
                   placeholder="Cook Time">
                   <option value="">Cook Time</option>
-                  <option value="1">10 minutes</option>
-                  <option value="2">20 minutes</option>
-                  <option value="3">30 minutes</option>
-                  <option value="4">40 minutes</option>
-                  <option value="5">50 minutes</option>
-                  <option value="6">1 Hour</option>
-                  <option value="7">1.30 Hours</option>
-                  <option value="8">2 Hours</option>
+                  <option value="10 minutes">10 minutes</option>
+                  <option value="20 minutes">20 minutes</option>
+                  <option value="30 minutes">30 minutes</option>
+                  <option value="40 minutes">40 minutes</option>
+                  <option value="50 minutes">50 minutes</option>
+                  <option value="1 Hour">1 Hour</option>
+                  <option value="1.30 Hours">1.30 Hours</option>
+                  <option value="2 Hours">2 Hours</option>
                 </select>
                   </Col>
                   <Col>
@@ -115,7 +116,7 @@ import { v4 as uuidv4 } from 'uuid';
                 >
               </label>
                 <select
-                  onChange={this.changeHandler}
+                  onChange={e => this.changeHandler(e)}
                   type="numberofguests"
                   id="defaultFormRegisterConfirmEx3"
                   className="form-control"
@@ -136,9 +137,8 @@ import { v4 as uuidv4 } from 'uuid';
               <h2 className="header2">Add Ingredients</h2>
               <br />
               <Row>
-              <FaPlus className="button-plus" onClick={()=>{
-                  this.setState(previousState=>({ingredients:[...previousState.ingredients,
-                  {measurement:"", unit:"", ingredients:""}]}))}}/>
+              <FaPlus className="button-plus" onClick={(e)=>{
+                  this.addButton(e)}}/>
               <Col>
                   <label
                   htmlFor="defaultFormRegisterNameEx"
@@ -147,10 +147,10 @@ import { v4 as uuidv4 } from 'uuid';
               </label>
               {this.state.ingredients.map(ingredients=>(
                 <input type="text"
+                key= {uuidv4}
                   value={this.state.measurement}
-                  key={uuidv4()}
                   name="measurement"
-                  onChange={this.changeHandler}
+                  onChange={e => this.changeHandler(e)}
                   id="defaultFormRegisterNameEx"
                   className="form-control"
                   placeholder="Measurement"
@@ -166,21 +166,21 @@ import { v4 as uuidv4 } from 'uuid';
                 >
               </label>
                 <select
-                  onChange={this.changeHandler}
+                  onChange={e => this.changeHandler(e)}
                   type="numberofguests"
                   id="defaultFormRegisterConfirmEx3"
                   className="form-control"
                   name="unit"
                   placeholder="Unit">
                   <option value="">Unit</option>
-                  <option value="1">c(Cup)</option>
-                  <option value="2">l(Liter)</option>
-                  <option value="3">kg(Kilogram)</option>
-                  <option value="4">g(Gram)</option>
-                  <option value="5">tsp(Teaspoon)</option>
-                  <option value="6">dp(Drop)</option>
-                  <option value="7">oz(Ounce)</option>
-                  <option value="8">Tbsp(Tablespoon)</option>
+                  <option value="c(Cup)">c(Cup)</option>
+                  <option value="l(Liter)">l(Liter)</option>
+                  <option value="kg(Kilogram)">kg(Kilogram)</option>
+                  <option value="g(Gram)">g(Gram)</option>
+                  <option value="tsp(Teaspoon)">tsp(Teaspoon)</option>
+                  <option value="dp(Drop)">dp(Drop)</option>
+                  <option value="oz(Ounce)">oz(Ounce)</option>
+                  <option value="Tbsp(Tablespoon)">Tbsp(Tablespoon)</option>
                 </select>
                   </Col>
                   <Col>
@@ -190,7 +190,7 @@ import { v4 as uuidv4 } from 'uuid';
                 >
               </label>
                 <input type="text"
-                  onChange={this.changeHandler}
+                  onChange={e => this.changeHandler(e)}
                   id="defaultFormRegisterNameEx"
                   className="form-control"
                   placeholder="Ingredients"
@@ -201,48 +201,9 @@ import { v4 as uuidv4 } from 'uuid';
               </Row>
               <h2 className="header2">Add Steps</h2>
               <Row>
-              <FaPlus className="button-plus" onClick={()=>{
-                        this.setState(previousState=>({steps:[...previousState.steps,
-                         {steps:"", number:previousState.currentStep}],
-                          currentStep: previousState.currentStep++}))}}>
-              </FaPlus>
-              <Col xs={2}>
-              <label
-                  htmlFor="defaultFormRegisterNameEx"
-                  className="grey-text"
-                >
-              </label>
-              {this.state.steps.map(number=> (
-                <input 
-                key={uuidv4()}
-                  onChange={this.changeHandler}
-                  id="defaultFormRegisterNameEx"
-                  className="form-control"
-                  placeholder="Add Number"
-                  required
-                />
-              ))}
-                <div className="valid-feedback">Looks good!</div>
-              </Col>
                   <Col>
-                <label
-                  htmlFor="defaultFormRegisterNameEx"
-                  className="grey-text"
-                >
-              </label>
-                <input type="text"
-                  onChange={this.changeHandler}
-                  id="defaultFormRegisterNameEx"
-                  className="form-control"
-                  placeholder="Step One"
-                  required
-                />
-                <div className="valid-feedback">Looks good!</div>
-              </Col>
+                  </Col>
               </Row>
-              <Button className="button-submit" color="primary" type="submit">
-                  Create Recipe
-              </Button>
               </form>
               </div>
               </Container>

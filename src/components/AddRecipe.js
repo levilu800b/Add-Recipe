@@ -25,8 +25,10 @@ import { v4 as uuidv4 } from 'uuid';
             [e.target.name]: e.target.value });
       };
 
-      addButton (){
-        this.setState({ingredients:[...this.state.ingredients, {measurement:"", unit:"", ingredients:""}]})
+      addButton = (e) => {
+        this.setState((prevState) => ({
+          ingredients: [...prevState.ingredients, {measurement:"", unit:"", ingredients:""}],
+        }));
       }
 
       

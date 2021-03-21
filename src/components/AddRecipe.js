@@ -32,7 +32,7 @@ import { v4 as uuidv4 } from 'uuid';
         }));
       }
 
-      addButton = (e) => {
+      addStep = (e) => {
         this.setState((prevState) => ({
           instructions: [...prevState.instructions, {step:"", instructions:""}],
         }));
@@ -210,8 +210,8 @@ import { v4 as uuidv4 } from 'uuid';
               <h2 className="header2">Add Steps</h2>
               <Row>
               <FaPlus className="button-plus" onClick={(e)=>{
-                  this.addButton(e)}}/>
-                 <Col xs="3">
+                  this.addStep(e)}}/>
+                 <Col xs="2">
                   <label
                   htmlFor="defaultFormRegisterNameEx"
                   className="grey-text"

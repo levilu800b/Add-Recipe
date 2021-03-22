@@ -175,7 +175,7 @@ import { v4 as uuidv4 } from 'uuid';
               </label>
                 <select
                   onChange={e => this.changeHandler(e)}
-                  type="numberofguests"
+                  type="unit"
                   id="defaultFormRegisterConfirmEx3"
                   className="form-control"
                   name="unit"

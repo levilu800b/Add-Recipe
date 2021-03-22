@@ -78,7 +78,7 @@ import { v4 as uuidv4 } from 'uuid';
               </label>
                 <select
                   onChange={e => this.changeHandler(e)}
-                  type="numberofguests"
+                  type="numberofguests" /* is this the correct type? */
                   id="defaultFormRegisterConfirmEx3"
                   className="form-control"
                   name="preptime"
@@ -154,6 +154,15 @@ import { v4 as uuidv4 } from 'uuid';
                   className="grey-text"
                 >
               </label>
+                {/* 
+                
+                When you map through your array you only set up the first input box
+                to add the others you will need to also add the other input boxes.
+
+                The first ones are added as you add them individually below.
+                
+                */}
+
               {this.state.ingredients.map(ingredients=>(
                 <input type="text"
                 key= {uuidv4}
@@ -164,7 +173,8 @@ import { v4 as uuidv4 } from 'uuid';
                   placeholder="Measurement"
                   required
                 />
-              ))}
+              ))} 
+              
                 <div className="valid-feedback">Looks good!</div>
                 </Col>
                   <Col>
@@ -175,7 +185,7 @@ import { v4 as uuidv4 } from 'uuid';
               </label>
                 <select
                   onChange={e => this.changeHandler(e)}
-                  type="numberofguests"
+                  type="numberofguests" /* still number of Guests? */
                   id="defaultFormRegisterConfirmEx3"
                   className="form-control"
                   name="unit"

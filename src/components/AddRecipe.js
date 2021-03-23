@@ -145,7 +145,8 @@ import { v4 as uuidv4 } from 'uuid';
               </Row>
               <h2 className="header2">Add Ingredients</h2>
               <br />
-              <Row>
+              {this.state.ingredients.map((ingredients)=>( 
+              <Row key= {uuidv4}>
               <FaPlus className="button-plus" onClick={(e)=>{
                   this.addIngredients(e)}}/>
               <Col>
@@ -154,9 +155,7 @@ import { v4 as uuidv4 } from 'uuid';
                   className="grey-text"
                 >
               </label>
-              {this.state.ingredients.map(ingredients=>(
                 <input type="text"
-                key= {uuidv4}
                   value={this.state.measurement}
                   onChange={e => this.changeHandler(e)}
                   id="defaultFormRegisterNameEx"
@@ -164,7 +163,6 @@ import { v4 as uuidv4 } from 'uuid';
                   placeholder="Measurement"
                   required
                 />
-              ))}
                 <div className="valid-feedback">Looks good!</div>
                 </Col>
                   <Col>
@@ -207,8 +205,10 @@ import { v4 as uuidv4 } from 'uuid';
                 <div className="valid-feedback">Looks good!</div>
                 </Col>
               </Row>
+              ))}
               <h2 className="header2">Add Steps</h2>
-              <Row>
+              {this.state.instructions.map(instructions=>(
+              <Row key= {uuidv4}>
               <FaPlus className="button-plus" onClick={(e)=>{
                   this.addStep(e)}}/>
                  <Col xs="2">
@@ -217,9 +217,7 @@ import { v4 as uuidv4 } from 'uuid';
                   className="grey-text"
                 >
               </label>
-              {this.state.instructions.map(instructions=>(
                 <input type="text"
-                key= {uuidv4}
                   value={this.state.step}
                   onChange={e => this.changeHandler(e)}
                   id="defaultFormRegisterNameEx"
@@ -227,7 +225,6 @@ import { v4 as uuidv4 } from 'uuid';
                   placeholder="Insert No"
                   required
                 />
-              ))}
                 <div className="valid-feedback">Looks good!</div>
                 </Col>
                 <Col>
@@ -237,7 +234,6 @@ import { v4 as uuidv4 } from 'uuid';
                 >
               </label>
                 <input type="text"
-                  name="instructions"
                   onChange={e => this.changeHandler(e)}
                   id="defaultFormRegisterNameEx"
                   className="form-control"
@@ -247,6 +243,7 @@ import { v4 as uuidv4 } from 'uuid';
                 <div className="valid-feedback">Looks good!</div>
               </Col>
               </Row>
+              ))}
               </form>
               </div>
               </Container>

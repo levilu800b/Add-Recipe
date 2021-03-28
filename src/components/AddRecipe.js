@@ -109,6 +109,11 @@ class AddRecipe extends React.Component {
           <td>
             {ingredient.ingredient}
           </td>
+          <td>
+          <Button onClick={()=> this.updateIngredient()}> Edit</Button>{' '}
+          <Button variant="danger" onClick={()=> this.removeIngredient()}> Delete</Button>
+          
+        </td>
         </tr>
       );
     });
@@ -127,6 +132,10 @@ class AddRecipe extends React.Component {
           <td>
             {step.instruction}
           </td>
+          <td>
+          <Button onClick={()=> this.updateStep()}> Edit</Button>{' '}
+          <Button variant="danger" onClick={()=> this.removeStep()}> Delete</Button>
+        </td>
         </tr>
       );
     });
